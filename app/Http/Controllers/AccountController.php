@@ -33,6 +33,7 @@ class AccountController extends Controller
         }else{
             return Redirect(Route('login'))->withErrors("Login failed");
         }
+
         if(Hash::check(trim($request->input('password')), $user->password)){
             if($user->deleted == 1){
                 return Redirect(Route('login'))->withErrors("You're account has been deleted");
@@ -42,7 +43,9 @@ class AccountController extends Controller
             }
         }
         
-
+        Auth::guard('Admin')->logout();
+        Auth::guard('Owner')->logout();
+        Auth::guard('Staff')->logout();
         if (Auth::guard($userType)->attempt(['username' => $request->input('username'), 'password' => $request->input('password')])) {//hashes the password for me
             return Redirect(Route('dashboard'));
         }else{

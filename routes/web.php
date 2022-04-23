@@ -43,7 +43,7 @@ Route::get('/reportIncident', function () {
 
 Route::get('/residentForm', function () {
     return view('regular/residentForm');
-})->name("residentForm")->middleware('Owner');
+})->name("residentForm")->middleware('StaffOrOwner');
 
 
 Route::get('/staffView', 'RotaController@index')->name("staffView")->middleware('StaffOrOwner');
