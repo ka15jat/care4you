@@ -274,7 +274,7 @@
                                             <div
                                                 class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                                 <div class="justify-content-center align-self-center">
-                                                    <label for="medsgiven" class="form-label">Medication Given</label>
+                                                    <label for="medsgiven" class="form-label">Medication Given </label>
                                                     <input class="form-control" id="medsgiven"
                                                         aria-describedby="medsgivenHelp" rows=5
                                                         value="@if (!is_null($medication->medication_quantity_given)) {{ $medication->medication_quantity_given}} @endif"
