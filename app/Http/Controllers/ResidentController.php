@@ -9,16 +9,15 @@ use App\Models\abc_form;
 use App\Models\incident_form;
 use App\Models\appointment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class ResidentController extends Controller
 {
     public function ResidentUpload(Request $request){
         if(!Auth::guard('Owner')->check()){
-            return Redirect(Route('reidentForm'))->withErrors("Only an owner can create a resident.");
-            
+            return Redirect(Route('reidentForm'))->withErrors("Only an owner can create a resident.");   
         }
-        //dd($request);
         $medCount = $request->input('medCount');
         $messages = [
             'firstname.max' => 'Your first name is too long, Try again',
@@ -75,7 +74,10 @@ class ResidentController extends Controller
             $messages['medtime'. $i . '.date_format'] = 'Medication time is incorrect. Try again';
         }
 
+
         $request->validate($rules, $messages);
+        $path = Storage::disk('s3')->put('resimages', $request->file('resimage')) ?? '';
+
         $resident = new resident();
         $resident->companyCode =  Auth::guard('Owner')->user()->companyCode;
         $resident->firstname = $request->input('firstname');
@@ -86,6 +88,7 @@ class ResidentController extends Controller
         $resident->care_plan = $request->input('careplan');
         $resident->mental_health_history = $request->input('mentalhealth');
         $resident->physical_health_history = $request->input('physicalhealth');
+        $resident->path = $path;
         $resident->address = $request->input('address');
         $resident->save();
         for($i =1; $i <= count((array)$medCount); $i++){
@@ -265,6 +268,7 @@ class ResidentController extends Controller
         $request->validate($rules, $messages);
 
         $id = $request->input('residentID');
+        
         $updatedValues = [
             'firstname' => $request->input('firstname'),
             'lastname' => $request->input('surname'),
@@ -278,8 +282,9 @@ class ResidentController extends Controller
         ];
         
         if($request->has('resimage')){
-            //update the image
+            $updatedValues['path'] = Storage::disk('s3')->put('resimages', $request->file('resimage')) ?? '';
         }
+        
         resident::where('id', $id)->update($updatedValues);//can't update without loading so this is secure
 
         $medIDs = [];

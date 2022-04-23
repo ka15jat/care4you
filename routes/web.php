@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\Staff;
 
 
 //Regular
@@ -20,12 +21,15 @@ Route::post('/login', 'AccountController@login')->name('LoginPOST');
 
 Route::post('/registerAccount', 'AccountController@register')->name('RegisterPOST');
 
+
+
+
 //Auth
 Route::get('/dashboard', function(){
     return view('regular/dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('StaffOrOwnerOrAdmin');
 
-Route::get('/accounts', "AccountConfirmation@index")->name('accounts');
+Route::get('/accounts', "AccountConfirmation@index")->name('accounts')->middleware('OwnerOrAdmin');
 
 Route::post('/approveAccount', "AccountConfirmation@approveAccount")->name('approveAccount');
 
@@ -35,41 +39,41 @@ Route::post('/declineAccount', "AccountConfirmation@declineAccount")->name('decl
 
 Route::get('/reportIncident', function () {
     return view('regular/reportIncident');
-})->name("reportIncident");
+})->name("reportIncident")->middleware('Staff');
 
 Route::get('/residentForm', function () {
     return view('regular/residentForm');
-})->name("residentForm");
+})->name("residentForm")->middleware('Owner');
 
 
-Route::get('/staffView', 'RotaController@index')->name("staffView");
+Route::get('/staffView', 'RotaController@index')->name("staffView")->middleware('StaffOrOwner');
 
 Route::get('/support', function () {
     return view('regular/support');
-})->name("support");
+})->name("support")->middleware('StaffOrOwnerOrAdmin');
 
 Route::get('/training', function () {
     return view('regular/training');
-})->name("training");
+})->name("training")->middleware('StaffOrOwner');
 
 Route::get('/logout', 'AccountController@logout')->name('logout');
 
-Route::post('/residentUpload', 'ResidentController@ResidentUpload')->name('residentUpload');
+Route::post('/residentUpload', 'ResidentController@ResidentUpload')->name('residentUpload')->middleware('Owner');
 
-Route::post('/ABCUpload', 'ResidentController@ABCUpload')->name('ABCUpload');
+Route::post('/ABCUpload', 'ResidentController@ABCUpload')->name('ABCUpload')->middleware('Staff');
 
-Route::post('/incident_formUpload', 'ResidentController@incident_formUpload')->name('incident_formUpload');
+Route::post('/incident_formUpload', 'ResidentController@incident_formUpload')->name('incident_formUpload')->middleware('Staff');
 
-Route::post('/appointmentUpload', 'ResidentController@appointmentUpload')->name('appointmentUpload');
+Route::post('/appointmentUpload', 'ResidentController@appointmentUpload')->name('appointmentUpload')->middleware('Staff');
 
-Route::get('/residentEdit/{id?}', 'ResidentController@ResidentEdit')->name("residentEdit");
+Route::get('/residentEdit/{id?}', 'ResidentController@ResidentEdit')->name("residentEdit")->middleware('Owner');
 
-Route::post('/residentUpdate', 'ResidentController@residentUpdate')->name('residentUpdate');
+Route::post('/residentUpdate', 'ResidentController@residentUpdate')->name('residentUpdate')->middleware('Owner');
 
 
-Route::get('/sessionForm/{id?}', 'SessionController@index')->name('sessionForm');
-Route::post('/updateSessionForm', 'SessionController@handleSession')->name('updateSessionForm');
+Route::get('/sessionForm/{id?}', 'SessionController@index')->name('sessionForm')->middleware('Staff');
+Route::post('/updateSessionForm', 'SessionController@handleSession')->name('updateSessionForm')->middleware('Staff');
 
-Route::post('/uploadRota', 'RotaController@handleRota')->name('handleRota');
+Route::post('/uploadRota', 'RotaController@handleRota')->name('handleRota')->middleware('StaffOrOwner');
 
 

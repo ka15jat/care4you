@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Owner
 {
@@ -15,6 +16,10 @@ class Owner
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::guard('Owner')->check()) {
+            return $next($request);
+        }else{
+            return Redirect(Route('login'))->withErrors("You aren't the owner and therefore you can't access that page.");
+        }
     }
 }

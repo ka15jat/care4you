@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Admin
+class StaffOrOwner
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::guard('Admin')->check()) {
+        if (Auth::guard('Staff')->check() || Auth::guard('Owner')->check()) {
             return $next($request);
         }else{
-            return Redirect(Route('login'))->withErrors("You aren't the admin and therefore you can't access that page.");
+            return Redirect(Route('login'))->withErrors("You aren't a staff member or the owner and therefore you can't access that page.");
         }
     }
 }

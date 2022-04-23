@@ -12,7 +12,7 @@
                         <p> Resident Address: {{ $resident->address }}</p>
                     </div>
                 </div>
-                <img src='https://picsum.photos/100' alt='Resident Image'
+                <img src='https://care4you.s3.eu-west-2.amazonaws.com/{{$resident->path}}' alt='Resident Image'
                     style='width: 100px !important; min-height: 100px !important; padding:0px !important;margin-left:5%;' />
             </div>
         @endisset
@@ -288,9 +288,7 @@
                                                         Administred</label>
                                                     <input type="time" class="form-control" id="medstime"
                                                         aria-describedby="medstimeHelp" rows=5
-                                                        value="@if (!is_null($medication->time_administred))
-                                                         {{ Carbon\Carbon::parse($medication->time_administred)->format('H:i') }}@endif"
-                                                         
+                                                        value="@if(!is_null($medication->time_administred)){{ Carbon\Carbon::parse($medication->time_administred)->format('H:i')}}@endif"
                                                         name="medtime{{ $i + 1 }}" {{ $disabled }}>
                                                 </div>
                                             </div>

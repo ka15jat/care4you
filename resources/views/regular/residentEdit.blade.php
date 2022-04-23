@@ -15,7 +15,7 @@
             </div>
             
 
-            <img src='https://picsum.photos/100' alt='Resident Image'
+            <img src='https://care4you.s3.eu-west-2.amazonaws.com/{{$residentVal->path}}' alt='Resident Image'
                 style='width: 100px !important; min-height: 100px !important; padding:0px !important;margin-left:5%;' />
             
         </div>
@@ -197,7 +197,7 @@
                                                         <input type="time" class="form-control"
                                                             name="medtime{{ $i + 1 }}" id="medstime"
                                                             aria-describedby="medstimeHelp" rows=5
-                                                            value="{{ $medication->medication_times }}" required>
+                                                            value="{{ \Carbon\Carbon::parse($medication->medication_times)->format('H:i') }}" required>
                                                     </div>
                                                 </div>
                                                 <div

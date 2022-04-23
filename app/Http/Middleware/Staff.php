@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Staff
 {
@@ -15,6 +16,10 @@ class Staff
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::guard('Staff')->check()) {
+            return $next($request);
+        }else{
+            return Redirect(Route('login'))->withErrors("You aren't a staff member and therefore you can't access that page.");
+        }
     }
 }
