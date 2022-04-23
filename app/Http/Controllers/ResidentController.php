@@ -195,8 +195,12 @@ class ResidentController extends Controller
             return view('regular.residentEdit')->with('residents', $residents);
         }   
 
-        
-        $resident = resident::where('id', $id)->where('companyCode', Auth::guard('Staff')->user()->companyCode)->get();
+        if(Auth::guard('Owner')->check()){
+            $companyCode = Auth::guard('Owner')->user()->companyCode;
+        }else if(Auth::guard('Staff')->check()){
+            $companyCode = Auth::guard('Staff')->user()->companyCode;
+        }
+        $resident = resident::where('id', $id)->where('companyCode', $companyCode)->get();
         if(is_null($resident)){
             return view('regular.residentEdit')->with('residents', $residents)->with('error', 'This user is not a part of your company.');
         }

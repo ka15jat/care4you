@@ -66,7 +66,7 @@ Route::post('/incident_formUpload', 'ResidentController@incident_formUpload')->n
 
 Route::post('/appointmentUpload', 'ResidentController@appointmentUpload')->name('appointmentUpload')->middleware('Staff');
 
-Route::get('/residentEdit/{id?}', 'ResidentController@ResidentEdit')->name("residentEdit")->middleware('Owner');
+Route::get('/residentEdit/{id?}', 'ResidentController@ResidentEdit')->name("residentEdit")->middleware('StaffOrOwner');
 
 Route::post('/residentUpdate', 'ResidentController@residentUpdate')->name('residentUpdate')->middleware('Owner');
 
