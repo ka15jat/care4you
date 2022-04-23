@@ -15,7 +15,7 @@
         @endif
 
         <div class="mb-3 col-md-9 mx-auto">
-            <img src='https://picsum.photos/1500/600' class='mx-auto' alt='Rota Image'
+            <img src='https://care4you.s3.eu-west-2.amazonaws.com/{{$path}}' class='mx-auto' alt='Rota Image'
                 style='width: 98%; min-height:96%;' />
         </div>
     </form>

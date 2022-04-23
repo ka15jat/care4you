@@ -25,7 +25,10 @@ class CreateResidentTable extends Migration
             $table->longText('mental_health_history');
             $table->longText('physical_health_history');
             $table->string('address');
+            $table->string('path');
             $table->timestamps();
+
+  
 
             
         });

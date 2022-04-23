@@ -42,9 +42,7 @@ Route::get('/residentForm', function () {
 })->name("residentForm");
 
 
-Route::get('/staffView', function () {
-    return view('regular/staffView');
-})->name("staffView");
+Route::get('/staffView', 'RotaController@index')->name("staffView");
 
 Route::get('/support', function () {
     return view('regular/support');

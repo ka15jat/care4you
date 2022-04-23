@@ -81,20 +81,24 @@ class AccountController extends Controller
         ];
         
         $accountType = $request->input('accountType');
-        $uniqueString = 'unique:App\User';
-        if($accountType == 'Admin' || $accountType == 'Owner' || $accountType == 'Staff'){
-            $uniqueString = 'unique:App\Models\\' .$accountType;
-        }
         
         $request->validate([
             'firstname' => 'required|max:100|regex:/^[a-zA-Z\s]*$/', //Letters only
             'lastname' => 'required|max:100|regex:/^[a-zA-Z\s]*$/', //Letters only
-            'username' => 'required|max:100|min:6|'. $uniqueString,
+            'username' => 'required|max:100|min:6',
             'email' => 'required|Email|max:100|Email',
             'password' => 'required|max:100|min:8',
             'cpassword' => 'required|same:password',
             'accountType' => 'required'
         ], $messages);
+
+        $username = $request->input('username');
+        $ownerCheck = Owner::where('username', $username)->first();
+        $staffCheck = Staff::where('username', $username)->first();
+        $adminCheck = Admin::where('username', $username)->first();
+        if(!is_null($ownerCheck) || !is_null($staffCheck) || !is_null($adminCheck)){
+            throw ValidationException::withMessages(['username' => 'That username is already taken.']);
+        }
 
         
         if($request->has('companyCode')){
