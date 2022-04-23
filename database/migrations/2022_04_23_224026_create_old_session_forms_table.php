@@ -44,7 +44,7 @@ class CreateOldSessionFormsTable extends Migration
             #handover
             $table->string('handover');
             $table->string('staff_support');
-
+            $table->string('digsign');
             $table->timestamps();
         });
     }

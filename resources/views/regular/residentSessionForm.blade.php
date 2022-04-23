@@ -87,7 +87,7 @@
                 </li>
                 @isset($residentID)
                     <li class="nav-item" role="presentation">
-                        <button type="submit" class="btn btn-primary" id='submitBtn'>Submit</button>
+                        <button type="submit" class="btn btn-primary" id='submitBtn'  {{$disabledSession}}>Submit</button>
                     </li>
                 @endisset
 
@@ -99,7 +99,7 @@
                     <div class='row'>
                         <div class="mb-3 col-md-6">
                             <label for="morning" class="form-label">Morning</label>
-                            <textarea class="form-control" id="morningActivity" name="morningActivity" aria-describedby="morningHelp" rows=5>
+                            <textarea class="form-control" id="morningActivity" name="morningActivity" aria-describedby="morningHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->activityMorning)
 {{ $sessionForm->activityMorning }}
 @endisset
@@ -107,7 +107,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="midday" class="form-label">Midday</label>
-                            <textarea class="form-control" id="middayActivity" name="middayActivity" aria-describedby="middayHelp" rows=5>
+                            <textarea class="form-control" id="middayActivity" name="middayActivity" aria-describedby="middayHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->activityMidday)
 {{ $sessionForm->activityMidday }}
 @endisset
@@ -116,7 +116,7 @@
                         <div class="mb-3 col-md-6">
                             <label for="afternoon" class="form-label">Afternoon</label>
                             <textarea class="form-control" id="afternoonActivity" name="afternoonActivity" aria-describedby="afternoonHelp"
-                                rows=5>
+                                rows=5 {{$disabledSession}}>
 @isset($sessionForm->activityAfternoon)
 {{ $sessionForm->activityAfternoon }}
 @endisset
@@ -124,7 +124,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="evening" class="form-label">Evening</label>
-                            <textarea class="form-control" id="eveningActivity" name="eveningActivity" aria-describedby="eveningHelp" rows=5>
+                            <textarea class="form-control" id="eveningActivity" name="eveningActivity" aria-describedby="eveningHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->activityEvening)
 {{ $sessionForm->activityEvening }}
 @endisset
@@ -136,7 +136,7 @@
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="morning" class="form-label">Morning</label>
-                            <textarea class="form-control" id="moodmorning" name="morningMood" aria-describedby="morningHelp" rows=5>
+                            <textarea class="form-control" id="moodmorning" name="morningMood" aria-describedby="morningHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->moodMorning)
 {{ $sessionForm->moodMorning }}
 @endisset
@@ -144,7 +144,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="midday" class="form-label">Midday</label>
-                            <textarea class="form-control" id="moodmidday" name="middayMood" aria-describedby="middayHelp" rows=5>
+                            <textarea class="form-control" id="moodmidday" name="middayMood" aria-describedby="middayHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->moodMidday)
 {{ $sessionForm->moodMidday }}
 @endisset
@@ -152,7 +152,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="afternoon" class="form-label">Afternoon</label>
-                            <textarea class="form-control" id="moodafternoon" name="afternoonMood" aria-describedby="afternoonHelp" rows=5>
+                            <textarea class="form-control" id="moodafternoon" name="afternoonMood" aria-describedby="afternoonHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->moodAfternoon)
 {{ $sessionForm->moodAfternoon }}
 @endisset
@@ -160,7 +160,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="evening" class="form-label">Evening</label>
-                            <textarea class="form-control" id="moodevening" name="eveningMood" aria-describedby="eveningHelp" rows=5>
+                            <textarea class="form-control" id="moodevening" name="eveningMood" aria-describedby="eveningHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->moodEvening)
 {{ $sessionForm->moodEvening }}
 @endisset
@@ -174,22 +174,22 @@
                             <label for="breakfast" class="form-label">Breakfast</label>
                             <input class="form-control" id="breakfast" name="breakfast" aria-describedby="breakfastHelp"
                                 rows=5
-                                value="@isset($sessionForm->breakfast) {{ $sessionForm->breakfast }} @endisset">
+                                value="@isset($sessionForm->breakfast) {{ $sessionForm->breakfast }} @endisset" {{$disabledSession}}>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="lunch" class="form-label">Lunch</label>
                             <input class="form-control" id="lunch" name="lunch" aria-describedby="lunchHelp" rows=5
-                                value="@isset($sessionForm->lunch) {{ $sessionForm->lunch }} @endisset">
+                                value="@isset($sessionForm->lunch) {{ $sessionForm->lunch }} @endisset" {{$disabledSession}}>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="dinner" class="form-label">Dinner</label>
                             <input class="form-control" id="dinner" name="dinner" aria-describedby="dinnerHelp" rows=5
-                                value="@isset($sessionForm->dinner) {{ $sessionForm->dinner }} @endisset">
+                                value="@isset($sessionForm->dinner) {{ $sessionForm->dinner }} @endisset" {{$disabledSession}}>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="snacks" class="form-label">Snacks</label>
                             <input class="form-control" id="snacks" name="snacks" aria-describedby="snacksHelp" rows=5
-                                value="@isset($sessionForm->snacks) {{ $sessionForm->snacks }} @endisset">
+                                value="@isset($sessionForm->snacks) {{ $sessionForm->snacks }} @endisset" {{$disabledSession}}>
                         </div>
                     </div>
                 </div>
@@ -197,18 +197,18 @@
                     <div class='row'>
                         <div class="mb-3 col-md-6">
                             <input type="checkbox" name="showercheck" class="form-check-input" id="showercheck"
-                                @isset($sessionForm->has_showered) {{ $sessionForm->has_showered == 1 ? 'checked' : '' }} @endisset />
+                                @isset($sessionForm->has_showered) {{ $sessionForm->has_showered == 1 ? 'checked' : '' }} @endisset  {{$disabledSession}} />
                             <label class="form-check-label" for="exampleCheck1">Showered</label>
                         </div>
                         <div class="mb-3 col-md-6">
                             <input type="checkbox" class="form-check-input" name="brushedteethcheck" id="brushedteethcheck"
-                                @isset($sessionForm->has_brushed_teeth) {{ $sessionForm->has_brushed_teeth == 1 ? 'checked' : '' }} @endisset>
+                                @isset($sessionForm->has_brushed_teeth) {{ $sessionForm->has_brushed_teeth == 1 ? 'checked' : '' }} @endisset {{$disabledSession}}/>
                             <label class="form-check-label" for="exampleCheck1">Brushed
                                 Teeth</label>
                         </div>
                         <div class="mb-3 col-md-6">
                             <input type="checkbox" class="form-check-input" name="changedcheck" id="changedcheck"
-                                @isset($sessionForm->has_changed_clothes) {{ $sessionForm->has_changed_clothes == 1 ? 'checked' : '' }} @endisset>
+                                @isset($sessionForm->has_changed_clothes) {{ $sessionForm->has_changed_clothes == 1 ? 'checked' : '' }} @endisset {{$disabledSession}}/>
                             <label class="form-check-label" for="exampleCheck1">Changed
                                 Clothes</label>
                         </div>
@@ -218,7 +218,7 @@
                     <div class='row'>
                         <div class="mb-3 col-md-6">
                             <label for="cleaningdone" class="form-label">What Cleaning Has Been Done</label>
-                            <textarea class="form-control" id="cleaningdone" name="cleaningDone" aria-describedby="cleaningdoneHelp" rows=5>
+                            <textarea class="form-control" id="cleaningdone" name="cleaningDone" aria-describedby="cleaningdoneHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->cleaning_completed_today)
 {{ $sessionForm->cleaning_completed_today }}
 @endisset
@@ -227,7 +227,7 @@
                         <div class="mb-3 col-md-6">
                             <label for="cleaningrequired" class="form-label">What Cleaning is required</label>
                             <textarea class="form-control" id="cleaningrequired" name="cleaningRequired" aria-describedby="cleaningrequiredHelp"
-                                rows=5>
+                                rows=5  {{$disabledSession}}>
 @isset($sessionForm->cleaning_required)
 {{ $sessionForm->cleaning_required }}
 @endisset
@@ -248,7 +248,7 @@
                                     }
                                 @endphp
                                 <div class="CustomW75 mx-auto">
-                                    <input type="hidden" name="medID{{ $i + 1 }}" value="{{ $medication->id }}" {{$disabled}}/>
+                                    <input type="hidden" name="medID{{ $i + 1 }}" value="{{ $medication->id }}" {{$disabled}} {{$disabledSession}}/>
                                     <div class="row">
                                         <h3 class="mx-auto">Medication</h3>
                                         <div class="row mt-3 mb-3 ml-3 mr-3 shadow-lg unapprovedUsers mx-auto col-12 p-3">
@@ -268,7 +268,7 @@
                                                     <input class="form-control" aria-describedby="medsremHelp"
                                                         rows=5
                                                         value="@if (!is_null($medication->medication_remaining)) {{ $medication->medication_remaining }} @endif"
-                                                        name="medremain{{ $i + 1 }}" {{ $disabled }} id='medRemain'>
+                                                        name="medremain{{ $i + 1 }}" {{ $disabled }} {{$disabledSession}} id='medRemain'>
                                                 </div>
                                             </div>
                                             <div
@@ -278,7 +278,7 @@
                                                     <input class="form-control" id="medsgiven"
                                                         aria-describedby="medsgivenHelp" rows=5
                                                         value="@if (!is_null($medication->medication_quantity_given)) {{ $medication->medication_quantity_given}} @endif"
-                                                        name="medgiven{{ $i + 1 }}" {{ $disabled }}>
+                                                        name="medgiven{{ $i + 1 }}" {{ $disabled }} {{$disabledSession}}>
                                                 </div>
                                             </div>
                                             <div
@@ -289,7 +289,7 @@
                                                     <input type="time" class="form-control" id="medstime"
                                                         aria-describedby="medstimeHelp" rows=5
                                                         value="@if(!is_null($medication->time_administred)){{ Carbon\Carbon::parse($medication->time_administred)->format('H:i')}}@endif"
-                                                        name="medtime{{ $i + 1 }}" {{ $disabled }}>
+                                                        name="medtime{{ $i + 1 }}" {{ $disabled }} {{$disabledSession}}>
                                                 </div>
                                             </div>
                                             <div
@@ -310,7 +310,7 @@
                     <div class='row'>
                         <div class="mb-3 col-md-6">
                             <label for="handoverinfo" class="form-label">Handover infomation</label>
-                            <textarea class="form-control" id="handoverinfo" name="handover" aria-describedby="handoverinfoHelp" rows=5>
+                            <textarea class="form-control" id="handoverinfo" name="handover" aria-describedby="handoverinfoHelp" rows=5 {{$disabledSession}}>
 @isset($sessionForm->handover)
 {{ $sessionForm->handover }}
 @endisset
@@ -319,7 +319,7 @@
                         <div class="mb-3 col-md-6">
                             <label for="residentSupport" class="form-label">How have you supported the resident</label>
                             <textarea class="form-control" id="residentsupport" name="residentSupport" aria-describedby="residentSupportHelp"
-                                rows=5>
+                                rows=5 {{$disabledSession}}>
 @isset($sessionForm->staff_support)
 {{ $sessionForm->staff_support }}
 @endisset
@@ -341,13 +341,13 @@
                                 @endphp
                                 <div class='row mb-2 pb-2' style="background-color:var(--navBg)">
                                     <input type='hidden' name='appointmentID{{ $i + 1 }}'
-                                        value='{{ $appointment->id }}' />
+                                        value='{{ $appointment->id }}'  {{$disabledSession}}/>
                                     <div>
                                         <p>Appointments Details: {{ $appointment->appointment_details }}</p>
                                         <label class="form-check-label" for="check">Attended</label>
                                         <input type="checkbox" class="form-check-input"
                                             name="attendedcheck{{ $i + 1 }}" {{ $disabled }}
-                                            @isset($appointment->attended) {{ $appointment->attended == 1 ? 'checked' : '' }} @endisset>
+                                            @isset($appointment->attended) {{ $appointment->attended == 1 ? 'checked' : '' }} @endisset  {{$disabledSession}}>
                                     </div>
                                     <div
                                         class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
@@ -357,21 +357,21 @@
                                         class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                         <label for="medstime" class="form-label">Reason for not attending</label>
                                         <input class="form-control" id="noattended" name="notattended{{ $i + 1 }}"
-                                            aria-describedby="medstimeHelp" rows=5 {{ $disabled }}
+                                            aria-describedby="medstimeHelp" rows=5 {{ $disabled }}  {{$disabledSession}}
                                             value="@isset($appointment->reason_for_not_attending) {{ $appointment->reason_for_not_attending }} @endisset">
                                     </div>
                                     <div
                                         class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                         <label for="medstime" class="form-label">Appointment outcome</label>
                                         <input class="form-control" id="medstime" name="appoutcome{{ $i + 1 }}"
-                                            aria-describedby="medstimeHelp" rows=5 {{ $disabled }}
+                                            aria-describedby="medstimeHelp" rows=5 {{ $disabled }} {{$disabledSession}}
                                             value="{{ $appointment->appointment_outcome }}">
                                     </div>
                                 </div>
                             @endforeach
                         </div>
                         <button type="button" class="btn btn-primary my-2" data-bs-toggle="modal"
-                            data-bs-target="#appointmentModal">Add new appointment</button>
+                            data-bs-target="#appointmentModal"  {{$disabledSession}}>Add new appointment</button>
                     @endisset
                 </div>
                 <div class="tab-pane fade" id="incident" role="tabpanel" aria-labelledby="incident-tab">
@@ -381,43 +381,43 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="incident" class="form-label">Incident</label>
                                     <textarea class="form-control" name="incident" id="incident" aria-describedby="incidentHelp"
-                                        disabled>{{ $i->incident }}</textarea>
+                                        disabled  {{$disabledSession}}>{{ $i->incident }}</textarea>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="outcome" class="form-label">Outcome</label>
                                     <textarea class="form-control" name="outcome" id="outcome" aria-describedby="outcomeHelp"
-                                        disabled>{{ $i->outcome }}</textarea>
+                                        disabled  {{$disabledSession}}>{{ $i->outcome }}</textarea>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <input type="checkbox" class="form-check-input" name="checkres" id="checkres"
-                                        @if ($i->is_resident_injured == 1) {{ 'checked' }} @endif disabled>
+                                        @if ($i->is_resident_injured == 1) {{ 'checked' }} @endif disabled  {{$disabledSession}}/>
                                     <label class="form-check-label" for="checkres">Was resident injured</label>
                                     <input type="checkbox" class="form-check-input" name="checkstaff" id="checkstaff"
-                                        @if ($i->is_staff_injured == 1) {{ 'checked' }} @endif disabled>
+                                        @if ($i->is_staff_injured == 1) {{ 'checked' }} @endif disabled  {{$disabledSession}}/>
                                     <label class="form-check-label" for="checkstaff">Was Staff injured</label>
                                     <div>
                                         <label for="injdetails" class="form-label">Injury Details</label>
                                         <input class="form-control" name="injdetails" id="injdetails"
-                                            aria-describedby="injdetailsHelp" value="{{ $i->injury_details }}" disabled />
+                                            aria-describedby="injdetailsHelp" value="{{ $i->injury_details }}" disabled  {{$disabledSession}}/>
                                     </div>
 
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="resbehaviour" class="form-label">Resident Behaviour</label>
                                     <input class="form-control" name="resbehaviour" id="resbehaviour"
-                                        aria-describedby="resbehaviourHelp" value="{{ $i->behaviour }}" disabled />
+                                        aria-describedby="resbehaviourHelp" value="{{ $i->behaviour }}" disabled  {{$disabledSession}}/>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="callinfo" class="form-label">Call Details</label>
                                     <input class="form-control" name="callinfo" id="callinfo"
-                                        value="{{ $i->call_details }}" aria-describedby="callinfoHelp" disabled />
+                                        value="{{ $i->call_details }}" aria-describedby="callinfoHelp" disabled  {{$disabledSession}} />
                                 </div>
                                 <div
                                     class="col-12 col-md-4 col-xl-4 col-lg-4 col-sm-12 col-xxl-6 justify-content-center d-flex">
                                     <div class="justify-content-center align-self-center">
                                         <label for="escalation" class="form-label">Was the situation escalated?</label>
                                         <select class="form-select mb-2" name="escalation" aria-label="select"
-                                            style='width:300px;' disabled>
+                                            style='width:300px;' disabled {{$disabledSession}}>
                                             <option name="police_called" value="Police"
                                                 @if ($i->escalation = 'Police') {{ 'selected' }} @endif>Police</option>
                                             <option name="hospital_called" value="Hospital"
@@ -441,17 +441,17 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="antecedent" class="form-label">Antecedent</label>
                                     <textarea class="form-control" name="antecedent" id="antecedent" aria-describedby="antecedentHelp"
-                                        disabled>{{ $i->antecedent }}</textarea>
+                                        disabled {{$disabledSession}}>{{ $i->antecedent }}</textarea>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="behaviour" class="form-label">Behaviour</label>
                                     <textarea class="form-control" name="behaviour" id="behaviour" aria-describedby="behaviourHelp"
-                                        disabled>{{ $i->behaviour }}</textarea>
+                                        disabled {{$disabledSession}}>{{ $i->behaviour }}</textarea>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="consequence" class="form-label">Consequence</label>
                                     <textarea class="form-control" name="consequence" id="consequence" aria-describedby="consequenceHelp"
-                                        disabled>{{ $i->consequence }}</textarea>
+                                        disabled {{$disabledSession}}>{{ $i->consequence }}</textarea>
 
                                 </div>
 
@@ -463,7 +463,7 @@
                     <p>Confirm everything has been done and meds have all been Administred</p>
                     <div class='col-md-4 mx-auto'>
                         <label for="digsign" class="form-label">Digital Signature</label>
-                        <input class="form-control" id="digsign" aria-describedby="digsignHelp" rows=5 value="">
+                        <input class="form-control" id="digsign" aria-describedby="digsignHelp" name="digsign" rows=5 {{$disabledSession}}>
                     </div>
 
                 </div>

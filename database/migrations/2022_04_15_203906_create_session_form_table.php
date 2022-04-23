@@ -45,6 +45,7 @@ class CreateSessionFormTable extends Migration
             #handover
             $table->string('handover')->nullable();
             $table->string('staff_support')->nullable();
+            $table->string('digsign')->nullable();
 
             $table->timestamps();
         });
