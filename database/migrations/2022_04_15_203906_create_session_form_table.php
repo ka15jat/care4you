@@ -14,8 +14,8 @@ class CreateSessionFormTable extends Migration
     public function up()
     {
         Schema::create('session_form', function (Blueprint $table) {
-            $table->id()->nullable();
-            $table->string('residentID')->nullable();
+            $table->id();
+            $table->string('residentID');
             $table->string('staffID')->nullable();
             $table->longText('activityMorning')->nullable();
             $table->longText('activityMidday')->nullable();
