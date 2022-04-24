@@ -25,9 +25,7 @@ Route::post('/registerAccount', 'AccountController@register')->name('RegisterPOS
 
 
 //Auth
-Route::get('/dashboard', function(){
-    return view('regular/dashboard');
-})->name('dashboard')->middleware('StaffOrOwnerOrAdmin');
+Route::get('/dashboard', 'dashboardController@index')->name('dashboard')->middleware('StaffOrOwnerOrAdmin');
 
 Route::get('/accounts', "AccountConfirmation@index")->name('accounts')->middleware('OwnerOrAdmin');
 
