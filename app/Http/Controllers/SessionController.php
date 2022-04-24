@@ -29,9 +29,9 @@ class SessionController extends Controller
         session_form::where('residentID', $id)->whereDate('created_at','!=', Carbon::today())->delete();//delete old records before we select the session
         $sessionFormMain = session_form::where('residentID', $id)->whereDate('created_at', Carbon::today())->first();
         $sessionFormBackup = oldSessionForm::where('residentID', $id)->whereDate('created_at', Carbon::today())->first();
+        $disabledSession = '';
         if(!is_null($sessionFormMain)){
             $sessionForm = $sessionFormMain;
-            $disabledSession = '';
         }else if(is_null($sessionFormMain) && !is_null($sessionFormBackup)){
             $sessionForm = $sessionFormBackup;
             $disabledSession = 'disabled';
