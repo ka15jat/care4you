@@ -131,7 +131,7 @@
                                                 <label for="medstime" class="form-label">Medication adminster
                                                     time</label>
                                                 <input type="time" class="form-control" name="medtime1" id="medstime"
-                                                    aria-describedby="medstimeHelp" rows=5 value="{{-- $medication->medication_name ?? '' --}}"
+                                                    aria-describedby="medstimeHelp" rows=5 value=""
                                                     required>
                                             </div>
                                         </div>
