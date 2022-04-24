@@ -78,7 +78,7 @@
                             @foreach ($residents as $residentVal)
                                 <li>
                                     <a class="dropdown-item"
-                                        href="{{ route('sessionForm', ['id' => $residentVal->id]) }}">{{ $residentVal->id }}:
+                                        href="{{ route('sessionForm'), ['id' => $residentVal->id]) }}">{{ $residentVal->id }}:
                                         {{ $residentVal->firstname }} {{ $residentVal->lastname }}</a>
                                 </li>
                             @endforeach
