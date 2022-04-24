@@ -214,7 +214,8 @@
                                                             </option>
                                                         </select>
                                                     </div>
-                                                    <div
+                                                </div>
+                                                <div
                                                     class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                                     <div class="justify-content-center align-self-center">
                                                         <label for="med_required" class="form-label">Medication
@@ -236,8 +237,6 @@
                                                             Medication</button>
                                                     </div>
                                                 </div>
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>
