@@ -173,7 +173,7 @@
                                                 <div
                                                     class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-2 justify-content-center d-flex">
                                                     <div class="justify-content-center align-self-center">
-                                                        <label for="meddose" class="form-label">Medication Dose</label>
+                                                        <label for="meddose" class="form-label">Medication Dose mg:</label>
                                                         <input class="form-control" name="meddose{{ $i + 1 }}"
                                                             id="meddose" aria-describedby="meddoseHelp" rows=5
                                                             value="{{ $medication->medication_dose }}" required>
@@ -257,7 +257,7 @@
                                             <div
                                                 class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-2 justify-content-center d-flex">
                                                 <div class="justify-content-center align-self-center">
-                                                    <label for="meddose" class="form-label">Medication Dose</label>
+                                                    <label for="meddose" class="form-label">Medication Dose mg: </label>
                                                     <input class="form-control" name="meddose1" id="meddose"
                                                         aria-describedby="meddoseHelp" rows=5 required>
                                                 </div>
@@ -333,7 +333,7 @@
                                     <div
                                         class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-2 justify-content-center d-flex">
                                         <div class="justify-content-center align-self-center">
-                                            <label for="meddose" class="form-label">Medication Dose</label>
+                                            <label for="meddose" class="form-label">Medication Dose mg:</label>
                                             <input class="form-control meddose" name="meddose${id}" id="meddose"
                                                 aria-describedby="meddoseHelp" rows=5 value="">
                                         </div>

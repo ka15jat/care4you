@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 class SessionController extends Controller
 {
     public function index($id=null){
-        $residents = resident::all();
+        $residents = resident::where('companyCode', Auth::guard('Staff')->user()->companyCode)->get();
         if(is_null($id)){
            return view('regular.residentSessionForm')->with('residents', $residents); 
         }
@@ -65,6 +65,24 @@ class SessionController extends Controller
         $medCount = $request->input('medCount');
         $sessionCheck = $session->get();
         $values = [];
+        $values['residentID'] = $id;
+
+
+        //validation
+        for($i =1; $i <= $medCount; $i++){
+            $rules['medremain' . $i] = 'integer|max:50';
+            $rules['medgiven' . $i] = 'integer|max:5';
+
+            $messages['medremain'. $i . '.integer'] = 'Medication remaining must be an int. Try again';
+            $messages['medremain'. $i . '.max'] = 'Medication remaining is too high. Try again';
+
+            $messages['medgiven'. $i . '.integer'] = 'Medication given must be an int. Try again';
+            $messages['medgiven'. $i . '.max'] = 'Medication given is too high. Try again';
+        }
+
+        $request->validate($rules, $messages);
+
+
         if($request->has('morningActivity')){
             $values['activityMorning'] = $request->input('morningActivity');
         }

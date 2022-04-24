@@ -256,7 +256,7 @@
                                                 class="col-12 col-md-4 col-xl-3 col-lg-3 col-sm-12 col-xxl-2 justify-content-center d-flex">
                                                 <div class="justify-content-center align-self-center">
                                                     <p> Medication name: {{ $medication->medication_name }}</p>
-                                                    <p> Medication dose: {{ $medication->medication_dose }}</p>
+                                                    <p> Medication dose mg: {{ $medication->medication_dose }}</p>
                                                     <p> Medication quantity: {{ $medication->medication_quantity }}</p>
                                                 </div>
                                             </div>
