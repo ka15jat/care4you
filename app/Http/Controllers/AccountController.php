@@ -103,8 +103,8 @@ class AccountController extends Controller
             throw ValidationException::withMessages(['username' => 'That username is already taken.']);
         }
 
-        
-        if($request->has('companyCode')){
+        $companyCodeVal = $request->input('companyCode');
+        if($request->has('companyCode') && isset($companyCodeVal)){
             $ownerCheck = owner::where('companyCode', $request->input('companyCode'))->first();
             if(is_null($ownerCheck)){
                 throw ValidationException::withMessages(['company code' => 'The company code is incorrect.']);
@@ -128,10 +128,12 @@ class AccountController extends Controller
         $user->lastname = $request->input('lastname');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
-        if($request->has('companyCode')){
+        if($request->has('companyCode') && isset($companyCodeVal)){
             $user->companyCode = $request->input('companyCode');
         }if($accountType == 'Owner'){
             $user->companyCode = Str::uuid();
+        }else if($accountType == 'Admin'){
+            $user->companyCode = null;
         }
         $user->approved = 0;
         $user->deleted = 0;
