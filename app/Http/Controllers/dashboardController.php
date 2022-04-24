@@ -35,7 +35,7 @@ class dashboardController extends Controller
         ->get(['appointment.id', 'resident.firstname','resident.companyCode', 'resident.lastname', 'appointment.appointment_address', 'appointment.appointment_details']);
         
         //med times coming up for this day
-        $ownerStaffMedTimes = medication::where('resident.companyCode', $companyCode)->whereDate('medication_times', '>=', Carbon::now('Europe/London')->format('H:i:s'))->orderBy('medication_times')->join('resident', 'resident.id', '=', 'medication.residentID')
+        $ownerStaffMedTimes = medication::where('resident.companyCode', $companyCode)->whereTime('medication.medication_times', '>=', Carbon::now('Europe/London')->format('H:i:s'))->orderBy('medication.medication_times')->join('resident', 'resident.id', '=', 'medication.residentID')
         ->get(['medication.id', 'medication.medication_name','resident.companyCode', 'medication.medication_times', 'resident.firstname', 'resident.lastname']);
         
         //alert if incident or abc form was made order by recent for a week
