@@ -64,8 +64,11 @@
                             type="button" role="tab" aria-controls="medinfo" aria-selected="false">Medication
                             Infomation</button>
                     </li>
-                    <button class="btn btn-primary" type="submit" id='submitForm'>Edit Resident</button>
+                    @if (\Auth::guard('Owner')->check())
+                        <button class="btn btn-primary" type="submit" id='submitForm'>Edit Resident</button>
+                    @endif
                 </ul>
+
                 @csrf
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="pd" role="tabpanel" aria-labelledby="pd-tab">
@@ -158,7 +161,8 @@
                                 @foreach ($medications as $i => $medication)
                                     <div class="mx-auto">
                                         <div class="row">
-                                            <input type='hidden' name='medID{{ $i + 1 }}'value='{{ $medication->id }}' />
+                                            <input type='hidden' name='medID{{ $i + 1 }}'
+                                                value='{{ $medication->id }}' />
                                             <div class="row mt-3 mb-3 ml-3 mr-3 shadow-lg medication mx-auto col-12 p-3">
                                                 <div
                                                     class="col-12 col-md-4 col-xl-3 col-lg-3 col-sm-12 col-xxl-2 justify-content-center d-flex">
@@ -201,28 +205,42 @@
                                                             required>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
+                                                <div
+                                                    class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                                     <div class="justify-content-center align-self-center">
                                                         <label for="medstime" class="form-label">Medication type</label>
                                                         <select class="form-select" name="medtype{{ $i + 1 }}"
                                                             aria-label="select">
                                                             <option value="Blister Pack"
-                                                                @if ($medication->medication_type == 'Blister Pack') selected @endif>BlisterPack</option>
-                                                            <option value="Loose Box" @if ($medication->medication_type == 'Loose Box') selected @endif>Loose Box</option>
+                                                                @if ($medication->medication_type == 'Blister Pack') selected @endif>
+                                                                BlisterPack</option>
+                                                            <option value="Loose Box"
+                                                                @if ($medication->medication_type == 'Loose Box') selected @endif>Loose Box
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
+                                                <div
+                                                    class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                                     <div class="justify-content-center align-self-center">
-                                                        <label for="med_required" class="form-label">Medication Required</label>
-                                                        <select class="form-select" name="med_required{{ $i + 1 }}" aria-label="Default select">
-                                                            <option value="Yes"@if ($medication->is_medication_required == 'Yes') selected @endif>Yes</option>
-                                                            <option value="No"@if ($medication->is_medication_required == 'No') selected @endif>No</option>
+                                                        <label for="med_required" class="form-label">Medication
+                                                            Required</label>
+                                                        <select class="form-select"
+                                                            name="med_required{{ $i + 1 }}"
+                                                            aria-label="Default select">
+                                                            <option value="Yes"
+                                                                @if ($medication->is_medication_required == 'Yes') selected @endif>Yes
+                                                            </option>
+                                                            <option value="No"
+                                                                @if ($medication->is_medication_required == 'No') selected @endif>No
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-md-12 col-xl-12 col-lg-12 col-sm-12 col-xxl-12 justify-content-center d-flex mt-2">
-                                                    <button type='button' class='btn btn-danger removeMeds'>Remove Medication</button>
+                                                <div
+                                                    class="col-12 col-md-12 col-xl-12 col-lg-12 col-sm-12 col-xxl-12 justify-content-center d-flex mt-2">
+                                                    <button type='button' class='btn btn-danger removeMeds'>Remove
+                                                        Medication</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -281,7 +299,8 @@
                                             <div
                                                 class="col-12 col-md-12 col-xl-3 col-lg-4 col-sm-12 col-xxl-3 justify-content-center d-flex">
                                                 <div class="justify-content-center align-self-center">
-                                                    <label for="med_required" class="form-label">Medication Required</label>
+                                                    <label for="med_required" class="form-label">Medication
+                                                        Required</label>
                                                     <select class="form-select" name="med_required1"
                                                         aria-label="Default select">
                                                         <option value="Yes">Yes</option>

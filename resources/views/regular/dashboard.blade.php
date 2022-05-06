@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class='row mx-auto'>
             <div class='col-sm-6 col-12 col-xs-12'
-                style="background-color:var(--darkbg); min-height:75vh; max-height:75vh; overflow-y:auto;">
+                style="margin-bottom:10px; background-color:var(--darkbg); min-height:75vh; max-height:75vh; overflow-y:auto;">
                 <div class='orange'>
                     @if (\Auth::guard('Admin')->check())
                         <h4 class='mx-auto'>Unauthorised users</h4>
@@ -25,7 +25,7 @@
             </div>
             <div class='col-sm-6 col-xs-12'>
                 @if (\Auth::guard('Admin')->check())
-                    <div style="background-color:var(--darkbg); min-height: 75vh;max-height:75vh; overflow-y:auto;">
+                    <div style="margin-bottom:10px; background-color:var(--darkbg); min-height: 75vh;max-height:75vh; overflow-y:auto;">
                         <h4 class='mx-auto'>Recently created users</h4>
                         @foreach ($adminCreatedUsers as $recentCreatedUsers)
                             <p>{{$recentCreatedUsers->id}} username: {{$recentCreatedUsers->username}} name: {{$recentCreatedUsers->firstname}} {{$recentCreatedUsers->lastname}}, Created at: {{$recentCreatedUsers->created_at}}</p>
@@ -40,7 +40,7 @@
                                 {{ $medTimes->medication_name }} Time:{{ $medTimes->medication_times }}</p>
                         @endforeach
                     </div>
-                    <div style="background-color:var(--darkbg); min-height: 37vh;max-height:37vh; overflow-y:auto;">
+                    <div style="margin-bottom:10px; background-color:var(--darkbg); min-height: 37vh;max-height:37vh; overflow-y:auto;">
                         <h4>Previous incidents</h4>
                         @foreach ($ownerStaffIncidents as $incident)
                             <p>{{ $incident->id }} Resident Name: {{ $incident->firstname }} {{ $incident->lastname }}
