@@ -58,7 +58,6 @@ class SessionController extends Controller
     }
 
     public function handleSession(Request $request){
-
         $id =$request->input('residentID');
         $session = session_form::where('residentID', $id);
         $appCount = $request->input('appointmentCount');
@@ -70,8 +69,8 @@ class SessionController extends Controller
 
         //validation
         for($i =1; $i <= $medCount; $i++){
-            $rules['medremain' . $i] = 'integer|max:50';
-            $rules['medgiven' . $i] = 'integer|max:5';
+            $rules['medremain' . $i] = 'nullable|integer|max:50';
+            $rules['medgiven' . $i] = 'nullable|integer|max:5';
 
             $messages['medremain'. $i . '.integer'] = 'Medication remaining must be an int. Try again';
             $messages['medremain'. $i . '.max'] = 'Medication remaining is too high. Try again';
